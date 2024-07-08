@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Temperature Converter</h1>
+    <form action="/convert" method="post" class="mt-4">
+        <div class="form-group">
+            <label for="value">Temperature Value</label>
+            <input type="number" class="form-control" id="value" name="value" required>
+        </div>
+        <div class="form-group">
+            <label for="scale">Scale</label>
+            <select class="form-control" id="scale" name="scale">
+                <option value="C">Celsius</option>
+                <option value="F">Fahrenheit</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Convert</button>
+    </form>
+    <div class="mt-4" th:if="${convertedValue != null}">
+        <h2 class="text-center">Conversion Result</h2>
+        <p class="text-center" th:text="'Original: ' + ${originalValue} + ' ' + ${originalScale}"></p>
+        <p class="text-center" th:text="'Converted: ' + ${convertedValue} + ' ' + ${convertedScale}"></p>
+    </div>
+</div>
+</body>
+</html>
